@@ -10,5 +10,9 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 return [
-    \Nacos\Grpc\GreetingInterface::class=>\App\Rpc\GreetingConsumer::class
+    'default' => [
+        'driver' => Hyperf\Cache\Driver\RedisDriver::class,
+        'packer' => Hyperf\Utils\Packer\PhpSerializerPacker::class,
+        'prefix' => 'c:',
+    ],
 ];

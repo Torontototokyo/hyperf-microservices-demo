@@ -1,30 +1,26 @@
 <?php
-
-namespace App\Rpc;
-
-use Hyperf\RpcClient\AbstractServiceClient;
+namespace App\RpcService;
 use Nacos\Grpc\GreetingInterface;
-
-class GreetingConsumer extends AbstractServiceClient implements GreetingInterface
+use Hyperf\RpcServer\Annotation\RpcService;
+#[RpcService(name: 'GreetingService', server: 'jsonrpc', publishTo: 'nacos',protocol: 'jsonrpc-http')]
+class GreetingService implements GreetingInterface
 {
-    protected $serviceName = 'GreetingService';
-
-
     public function sayHello()
     {
         // TODO: Implement sayHello() method.
-        return $this->__request(__FUNCTION__, []);
+        return 'Hello';
     }
 
     public function sayGoodbye()
     {
         // TODO: Implement sayGoodbye() method.
+        return 'Goodbye';
     }
 
     public function say(string $words)
     {
         // TODO: Implement say() method.
+        return $words;
     }
-
 
 }

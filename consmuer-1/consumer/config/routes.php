@@ -9,6 +9,10 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-return [
-    \Nacos\Grpc\GreetingInterface::class=>\App\Rpc\GreetingConsumer::class
-];
+use Hyperf\HttpServer\Router\Router;
+
+Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
+
+Router::get('/favicon.ico', function () {
+    return '';
+});
