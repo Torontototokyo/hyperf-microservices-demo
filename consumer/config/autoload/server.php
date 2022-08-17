@@ -18,12 +18,12 @@ return [
     'servers' => [
         [
             'name' => 'jsonrpc',
-            'type' => Server::SERVER_BASE,
+            'type' => Server::SERVER_HTTP,
             'host' => '0.0.0.0',
             'port' => 9503,
             'sock_type' => SWOOLE_SOCK_TCP,
             'callbacks' => [
-                Event::ON_RECEIVE => [\Hyperf\JsonRpc\TcpServer::class, 'onReceive'],
+                Event::ON_REQUEST => [\Hyperf\JsonRpc\HttpServer::class, 'onRequest'],
             ],
             'settings' => [
                 'open_length_check' => true,
